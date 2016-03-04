@@ -1,0 +1,125 @@
+body{
+    margin-top: 50px;
+}
+/*========Home Page CSS=========*/
+.navbar-default .navbar-brand {
+    color: #fff;
+}
+.navbar-default {
+    background-color: #003580;
+    border:none;
+}
+.navbar-default .navbar-nav > li > a {
+    color: #fff;
+}
+#banner img{
+    height: 600px;
+    width: 100%;;
+ }
+
+#promo{
+    margin: 30px 0;
+}
+
+
+footer{
+    background-color: #003580;
+}
+footer p{
+    padding:10px 0;
+    margin-bottom: 0;
+    color: #fff;
+}
+
+/*==========About Page CSS=========*/
+#about_content{
+}
+
+
+/*=============Contact Page CSS===============*/
+#contact .row{
+    margin-top: 30px;
+}
+#contact .btn{
+    margin-top: 15px;
+}
+#map{
+    margin:20px 0 -5px 0;
+}
+
+/*===========Login Page CSS===========*/
+#login .row{
+    margin: 30px 0;
+}
+#login .btn{
+    margin-top: 10px;
+}
+
+
+/*===========Employee Page CSS============*/
+
+#employee .row{
+    margin: 30px 0;
+}
+#employee .btn{
+    margin-top: 10px;
+}
+
+/*==========After Save===========*/
+#aftersave .row{
+    margin: 50px 0;
+}
+#aftersave .col-sm-5{
+    padding-left:0;
+}
+#aftersave p{
+    margin-bottom: 20px;
+}
+
+/*===========My Profile===========*/
+#myProfile .row{
+    margin: 50px 0;
+}
+#myProfile p{
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: normal;
+}
+#myProfile img{
+    height: 200px;
+    width: 170px;
+}
+
+/*=============View On Click============*/
+#clickview .row{
+    margin: 50px 0;
+}
+#clickview .col-sm-9{
+    padding-left:0;
+}
+
+/*============Admin Role============*/
+#adminrole form{
+    margin-top: 50px;
+}
+#adminrole table{
+    margin: 50px 0;
+}
+
+/*==============Add Employee===============*/
+#AddEmployee .row{
+    margin: 30px 0;
+}
+
+/*=============Leave Management===============*/
+#LeaveManagement{
+    margin:100px 0 50px 0;
+}
+
+/*===========Employee Status============*/
+#employeeStatus .col-sm-4{
+    margin-top: 50px;
+}
+#employeeStatus table{
+    margin: 20px 0 50px 0;
+}
