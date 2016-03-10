@@ -62,9 +62,8 @@
                     <div class="form-group">
                         <label for="exampleInputInOut" class="sr-only">In time / Out time</label>
                         <select name="" id="exampleInputInOut" class="form-control">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
+                            <option value="1">In Time</option>
+                            <option value="2">Out Time</option>
                         </select>
                     </div>
                     <div class="form-group">
