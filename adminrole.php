@@ -46,7 +46,7 @@
                 <li><a href="#">Employee Status</a></li>
                 <li><a href="#">Leave Management</a></li>
                 <li><a href="#">Working History</a></li>
-                <li><a href="#">Log out</a></li>
+                <li><a href="logout.php">Log out</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->

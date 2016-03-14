@@ -22,11 +22,15 @@ if(isset($_POST['add']))
     $Father = $_POST['fName'];
     $Mother = $_POST['mName'];
     $Img = $_POST['Image'];
+    $Depart = $_POST['dPart'];
+    $Desig = $_POST['dNation'];
+    $Salary = $_POST['sAlary'];
 
     $sql = "INSERT INTO employee_detail(e_id, name, email, password, user_role, gender, date_of_birth, blood_group, address, contact, 	image, 	nid, father_name, 	mother_name ) VALUES ('$Id', '$Name', '$Email', '$Pass','$UserRol', '$Gend', '$Dofb', '$Bgroup', '$Addess', '$Mob', '$Img', '$Nid', '$Father', '$Mother')";
 
+    $sql2 = "INSERT INTO employee_status(department, designation, salary) VALUES ('$Depart', '$Desig', '$Salary')";
 
-    if ($dbcon->query($sql))
+    if ($dbcon->query($sql) && $dbcon->query($sql2))
     {
         echo("<script>location.href='addEmployee.php'</script>");
     }
@@ -174,6 +178,18 @@ if(isset($_POST['add']))
                     <div class="form-group">
                         <label for="exampleInputFile">Input Image</label>
                         <input type="file" name="Image" id="exampleInputFile">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Department</label>
+                        <input type="text" name="dPart" class="form-control" id="exampleInputEmail1">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Designation</label>
+                        <input type="text" name="dNation" class="form-control" id="exampleInputEmail1">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Salary</label>
+                        <input type="text" name="sAlary" class="form-control" id="exampleInputEmail1">
                     </div>
                     <button type="submit" name="add" class="btn btn-primary">Save</button>
                 </form>

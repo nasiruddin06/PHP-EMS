@@ -1,3 +1,48 @@
+<?php
+session_start();
+include('pdo_connection.php');
+include('database_config.php');
+$db_user =$database_user;
+$db_pass =$databse_pass;
+$db_name=$database_name;
+$dbcon=$connection_object->connection('localhost',$db_user,$db_pass,$db_name);
+
+if(isset($_POST['logIN']))
+{
+    $LogMail = $_POST['logMail'];
+    $LogPasword = $_POST['logPassword'];
+
+    $sql = "SELECT * FROM employee_detail WHERE email='$LogMail' AND password='$LogPasword'";
+
+    $data = $dbcon->query($sql);
+    $row = $data->fetch(PDO::FETCH_ASSOC);
+
+    $user_email = $row['email'];
+    $user_pass = $row['password'];
+    $user_role = $row['user_role'];
+
+
+    if ($user_email != "" && $user_pass !="")
+    {
+        $_SESSION['user'] = $user_email;
+        $_SESSION['login'] = "True";
+
+        if($user_role == "admin")
+        {
+            echo("<script>location.href='adminrole.php'</script>");
+        }
+        else
+        {
+            echo("<script>location.href='profile.php'</script>");
+        }
+    }
+    else {
+        $string = ' Sorry! Try again.\n';
+        echo "<script>alert(\"$string\")</script>";
+        echo("<script>location.href='login.php'</script>");
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,16 +102,16 @@
         <div class="row">
             <div class="col-sm-4 col-sm-offset-4">
                 <h2>Log In</h2>
-                <form>
+                <form method="post">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                        <input type="email" name="logMail" class="form-control" id="exampleInputEmail1" placeholder="Email">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                        <input type="password" name="logPassword" class="form-control" id="exampleInputPassword1" placeholder="Password">
                     </div>
-                    <button type="submit" class="btn btn-primary">Login</button>
+                    <button type="submit" name="logIN" class="btn btn-primary">Login</button>
                 </form>
             </div>
         </div>
