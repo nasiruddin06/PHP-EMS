@@ -1,3 +1,52 @@
+<?php
+session_start();
+
+if ($_SESSION['login'] != "True"){
+  $string = 'Sorry! You have to login first to view this page.';
+    echo "<script> alert(\"$string\")</script>>";
+    echo "<script>location.href='login.php'</script>>";
+}
+else{
+    $e_id = $_SESSION['userId'];
+
+    include('pdo_connection.php');
+    include('database_config.php');
+    $db_user =$database_user;
+    $db_pass =$databse_pass;
+    $db_name=$database_name;
+    $dbcon=$connection_object->connection('localhost',$db_user,$db_pass,$db_name);
+}
+
+date_default_timezone_set('Asia/Dhaka');
+
+if(isset($_POST['save']))
+{
+    $timeupdate = $_POST['timeInOut'];
+    $message = $_POST['reson'];
+    $Date = date('y-m-d');
+    $check = "SELECT count(*) AS count FROM work_history WHERE e_id='$e_id' AND date='$Date'";
+    $store = $dbcon->query($check);
+
+    $cnt = $store->fetch(PDO::FETCH_ASSOC);
+    $tcnt = $cnt['count'];
+
+
+    if ($timeupdate == 'inTime' && $tcnt == 0 )
+    {
+        $time = date('H:i');
+        $insert = "INSERT INTO work_history (e_id, check_in_time, check_out_time, reason, date) VALUES ('$e_id', '$time', '00:00:00', '$message', '$Date')";
+        $dbcon->query($insert);
+        $str = 'Your Time has been set';
+        echo "<script>alert(\"$str\")</script>";
+        echo ("<script>location.href = 'myprofile.php'</script>");
+    }
+    else {
+        $in = 'Sorry you have already submit your time';
+        echo "<script>alert(\"$in\")</script>";
+        echo ("<script>location.href = 'myprofile.php'</script>");
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,11 +89,11 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="#">My Profile</a></li>
-                <li><a href="#">Login</a></li>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="about.php">About</a></li>
+                <li><a href="contact.php">Contact</a></li>
+                <li><a href="myprofile.php">My Profile</a></li>
+                <li><a href="login.php">Login</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
@@ -58,19 +107,19 @@
         <div class="row">
             <div class="col-sm-4 col-sm-offset-4">
                 <h2>In time / Out Time</h2>
-                <form>
+                <form method="post">
                     <div class="form-group">
                         <label for="exampleInputInOut" class="sr-only">In time / Out time</label>
-                        <select name="" id="exampleInputInOut" class="form-control">
-                            <option value="1">In Time</option>
-                            <option value="2">Out Time</option>
+                        <select name="timeInOut" id="exampleInputInOut" class="form-control">
+                            <option value="inTime">In Time</option>
+                            <option value="outTime">Out Time</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1" class="sr-only">Reson</label>
-                        <input type="text" class="form-control" id="exampleInputReson" placeholder="Reson">
+                        <input type="text" name="reson" class="form-control" id="exampleInputReson" placeholder="Reson">
                     </div>
-                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="submit" name="save" class="btn btn-primary">Save</button>
                 </form>
             </div>
         </div>

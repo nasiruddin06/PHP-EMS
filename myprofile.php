@@ -1,3 +1,38 @@
+<?php
+session_start();
+
+if ($_SESSION['login'] != "True"){
+    $string = 'Sorry! You have to login first to view this page.';
+    echo "<script> alert(\"$string\")</script>>";
+    echo "<script>location.href='login.php'</script>>";
+}
+else{
+    $e_id = $_SESSION['userId'];
+
+    include('pdo_connection.php');
+    include('database_config.php');
+    $db_user =$database_user;
+    $db_pass =$databse_pass;
+    $db_name=$database_name;
+    $dbcon=$connection_object->connection('localhost',$db_user,$db_pass,$db_name);
+
+
+    $sql = "SELECT * FROM employee_detail, employee_status WHERE employee_detail.e_id ='$e_id' AND employee_status.e_id='$e_id'";
+
+    $data = $dbcon->query($sql);
+    $row = $data->fetch(PDO::FETCH_ASSOC);
+
+    $user_name = $row['name'];
+    $user_designation = $row['designation'];
+    $user_email = $row['email'];
+    $user_addres = $row['address'];
+    $user_age = $row['date_of_birth'];
+    $user_gender = $row['gender'];
+    $user_mob = $row['contact'];
+
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,11 +75,11 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="#">My Profile</a></li>
-                <li><a href="#">Login</a></li>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="about.php">About</a></li>
+                <li><a href="contact.php">Contact</a></li>
+                <li><a href="myprofile.php">My Profile</a></li>
+                <li><a href="logout.php">Logout</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
@@ -58,21 +93,21 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-9">
-                <h2>Linkon Islam Profile</h2>
+                <h2>Your Profile</h2>
             </div>
             <div class="col-sm-3">
-                <button type="submit" class="btn btn-primary pull-right">Edit</button>
+                <a href="editprofile.php" class="btn btn-primary pull-right">Edit</a>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-9">
-               <p> Name:Linkon Islam</p>
-               <p> Designation:Mentor</p>
-               <p> E-mail:linlon@coderstrust.com</p>
-               <p> Address:Dhaka,1205</p>
-               <p> Age:26years</p>
-               <p> Gender:Male</p>
-               <p> Mobile:01700000000</p>
+               <p> Name:<?php echo $user_name;?></p>
+               <p> Designation:<?php echo $user_designation;?></p>
+               <p> E-mail:<?php echo $user_email;?></p>
+               <p> Address:<?php echo $user_addres;?></p>
+               <p> Date of Birth:<?php echo $user_age;?></p>
+               <p> Gender:<?php echo $user_gender;?></p>
+               <p> Mobile:<?php echo $user_mob;?></p>
             </div>
             <div class="col-sm-3">
                 <img src="images/Car(1).jpg" alt="" class="img-responsive pull-right">

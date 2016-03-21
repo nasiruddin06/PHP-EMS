@@ -10,6 +10,7 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -40,13 +41,13 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Attendance</a></li>
-                <li><a href="#">My Profile</a></li>
-                <li><a href="#">Add Employee</a></li>
-                <li><a href="#">Employee Status</a></li>
-                <li><a href="#">Leave Management</a></li>
-                <li><a href="#">Working Hour</a></li>
-                <li><a href="#">Log out</a></li>
+                <li><a href="employee.php">Attendance</a></li>
+                <li><a href="myprofile.php">My Profile</a></li>
+                <li><a href="addEmployee.php">Add Employee</a></li>
+                <li><a href="employeeStatus.php">Employee Status</a></li>
+                <li><a href="leaveManagement.php">Leave Management</a></li>
+                <li><a href="workHistory.php">Working Hour</a></li>
+                <li><a href="logout.php">Log out</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
@@ -57,6 +58,16 @@
 
 <div id="adminrole">
     <div class="container">
+        <div class="row">
+            <div class="col-sm-4 col-sm-offset-2">
+                <label for="">Form :</label>
+                <input type="text" name="dateOfBirth" class="form-control" id="datepicker">
+            </div>
+            <div class="col-sm-4">
+                <label for="">To :</label>
+                <input type="text" name="dateOfBirth" class="form-control" id="datepicker">
+            </div>
+        </div>
         <div class="row">
             <div class="col-sm-12">
                 <table class="table table-hover">
@@ -108,6 +119,13 @@
 <script src="js/jquery-1.11.2.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="js/bootstrap.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script>
+    $(function() {
+        $( "#datepicker" ).datepicker();
+    });
+</script>
 <script src="js/main.js"></script>
 </body>
 </html>

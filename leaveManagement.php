@@ -40,13 +40,13 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Attendance</a></li>
-                <li><a href="#">My Profile</a></li>
-                <li><a href="#">Add Employee</a></li>
-                <li><a href="#">Employee Status</a></li>
-                <li><a href="#">Leave Management</a></li>
-                <li><a href="#">Working History</a></li>
-                <li><a href="#">Log out</a></li>
+                <li><a href="employee.php">Attendance</a></li>
+                <li><a href="myprofile.php">My Profile</a></li>
+                <li><a href="addEmployee.php">Add Employee</a></li>
+                <li><a href="employeeStatus.php">Employee Status</a></li>
+                <li><a href="leaveManagement.php">Leave Management</a></li>
+                <li><a href="workHistory.php">Working History</a></li>
+                <li><a href="logout.php">Log out</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->

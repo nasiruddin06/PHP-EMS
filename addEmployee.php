@@ -28,7 +28,7 @@ if(isset($_POST['add']))
 
     $sql = "INSERT INTO employee_detail(e_id, name, email, password, user_role, gender, date_of_birth, blood_group, address, contact, 	image, 	nid, father_name, 	mother_name ) VALUES ('$Id', '$Name', '$Email', '$Pass','$UserRol', '$Gend', '$Dofb', '$Bgroup', '$Addess', '$Mob', '$Img', '$Nid', '$Father', '$Mother')";
 
-    $sql2 = "INSERT INTO employee_status(department, designation, salary) VALUES ('$Depart', '$Desig', '$Salary')";
+    $sql2 = "INSERT INTO employee_status(e_id, department, designation, salary) VALUES ('$Id', '$Depart', '$Desig', '$Salary')";
 
     if ($dbcon->query($sql) && $dbcon->query($sql2))
     {
@@ -84,13 +84,13 @@ if(isset($_POST['add']))
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Attendance</a></li>
-                <li><a href="#">My Profile</a></li>
-                <li><a href="#">Add Employee</a></li>
-                <li><a href="#">Employee Status</a></li>
-                <li><a href="#">Leave Management</a></li>
-                <li><a href="#">Working Hour</a></li>
-                <li><a href="#">Log out</a></li>
+                <li><a href="employee.php">Attendance</a></li>
+                <li><a href="myprofile.php">My Profile</a></li>
+                <li><a href="addEmployee.php">Add Employee</a></li>
+                <li><a href="employeeStatus.php">Employee Status</a></li>
+                <li><a href="leaveManagement.php">Leave Management</a></li>
+                <li><a href="workHistory.php">Working Hour</a></li>
+                <li><a href="logout.php">Log out</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
@@ -126,7 +126,7 @@ if(isset($_POST['add']))
                         <input type="text" name="userNid" class="form-control" id="nId">
                     </div>
                         <label for="">Date of Birth :</label>
-                        <input type="text" name="dateOfBirth" class="form-control" id="datepicker">
+                        <input type="date" name="dateOfBirth" class="form-control" id="datepicker">
                     <div class="form-group">
                         <label for="address">Blood Group :</label>
                         <input type="text" name="bloodGroup" class="form-control" id="bGroup">

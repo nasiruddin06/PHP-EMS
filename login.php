@@ -11,7 +11,6 @@ if(isset($_POST['logIN']))
 {
     $LogMail = $_POST['logMail'];
     $LogPasword = $_POST['logPassword'];
-
     $sql = "SELECT * FROM employee_detail WHERE email='$LogMail' AND password='$LogPasword'";
 
     $data = $dbcon->query($sql);
@@ -20,12 +19,14 @@ if(isset($_POST['logIN']))
     $user_email = $row['email'];
     $user_pass = $row['password'];
     $user_role = $row['user_role'];
+    $e_id = $row['e_id'];
 
 
     if ($user_email != "" && $user_pass !="")
     {
         $_SESSION['user'] = $user_email;
         $_SESSION['login'] = "True";
+        $_SESSION['userId'] = $e_id;
 
         if($user_role == "admin")
         {
@@ -33,7 +34,7 @@ if(isset($_POST['logIN']))
         }
         else
         {
-            echo("<script>location.href='profile.php'</script>");
+            echo("<script>location.href='employee.php'</script>");
         }
     }
     else {
